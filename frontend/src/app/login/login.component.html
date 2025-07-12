@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="p-4 border rounded bg-light shadow-sm col-11 col-sm-8 col-md-6 col-lg-4">
+    <form #FormRef="ngForm" (ngSubmit)="onSubmit(FormRef, $event)">
+      <!-- Username -->
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          name="username"
+          required
+          minlength="5"
+          [(ngModel)]="user.username"
+          #usernameRef="ngModel"
+          placeholder="Enter your username"
+        />
+        <div *ngIf="usernameRef.invalid && usernameRef.touched" class="text-danger">
+          <div *ngIf="usernameRef.errors?.['required']">Username is required.</div>
+          <div *ngIf="usernameRef.errors?.['minlength']">Username must be at least 5 characters.</div>
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          required
+          minlength="5"
+          [(ngModel)]="user.password"
+          #passwordRef="ngModel"
+          placeholder="Enter your password"
+        />
+        <div *ngIf="passwordRef.invalid && passwordRef.touched" class="text-danger">
+          <div *ngIf="passwordRef.errors?.['required']">Password is required.</div>
+          <div *ngIf="passwordRef.errors?.['minlength']">Password must be at least 5 characters.</div>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary w-100" [disabled]="FormRef.invalid">
+        Login
+      </button>
+    </form>
+  </div>
+</div>

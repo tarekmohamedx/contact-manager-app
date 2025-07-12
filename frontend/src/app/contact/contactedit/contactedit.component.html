@@ -1,0 +1,90 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="p-4 border rounded bg-light shadow-sm col-11 col-sm-8 col-md-6 col-lg-4">
+        <h3 class="text-dark">Update contact</h3>
+      <form #FormRef="ngForm" (ngSubmit)="onSubmit(FormRef, $event)">
+        <div class="mb-3">
+          <label for="Name" class="form-label">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="Name"
+            name="Name"
+            required
+            minlength="3"
+            [(ngModel)]="contact.Name"
+            #nameRef="ngModel"
+            placeholder="Enter Name"
+          />
+          <div *ngIf="nameRef.invalid && nameRef.touched" class="text-danger">
+            <div *ngIf="nameRef.errors?.['required']">Name is required.</div>
+            <div *ngIf="nameRef.errors?.['minlength']">Name must be at least 3 characters.</div>
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="Address" class="form-label">Address</label>
+          <input
+            type="Address"
+            class="form-control"
+            id="Address"
+            name="Address"
+            required
+            minlength="4"
+            [(ngModel)]="contact.Address"
+            #addressRef="ngModel"
+            placeholder="Enter Address"
+          />
+          <div *ngIf="addressRef.invalid && addressRef.touched" class="text-danger">
+            <div *ngIf="addressRef.errors?.['required']">Address is required.</div>
+            <div *ngIf="addressRef.errors?.['minlength']">Address must be at least 4 characters.</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="Phone" class="form-label">Phone</label>
+            <input
+              type="Phone"
+              class="form-control"
+              id="Phone"
+              name="Phone"
+              required
+              minlength="10"
+              pattern="^[0-9]+$"
+              [(ngModel)]="contact.Phone"
+              #phoneRef="ngModel"
+              placeholder="Enter Phone"
+            />
+            <div *ngIf="phoneRef.invalid && phoneRef.touched" class="text-danger">
+              <div *ngIf="phoneRef.errors?.['required']">Phone is required.</div>
+              <div *ngIf="phoneRef.errors?.['pattern']">Phone must contain numbers only.</div>
+              <div *ngIf="phoneRef.errors?.['minlength']">Phone must be at least 10 characters.</div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="Notes" class="form-label">Notes</label>
+            <input
+              type="Notes"
+              class="form-control"
+              id="Notes"
+              name="Notes"
+              minlength="3"
+              [(ngModel)]="contact.notes"
+              #notesRef="ngModel"
+              placeholder="Add some notes"
+            />
+            <div *ngIf="notesRef.invalid && notesRef.touched" class="text-danger">
+              <div *ngIf="notesRef.errors?.['minlength']">Notes must be at least 3 characters.</div>
+            </div>
+          </div>
+  
+        <button type="submit" class="btn btn-secondary w-100" [disabled]="FormRef.invalid || (isLocked)">
+         Update Contact
+        </button>
+        <p *ngIf="isLocked" class="text-danger">
+          This contact is locked by another user.
+        </p>
+      </form>
+    </div>
+  </div>
+  
