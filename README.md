@@ -22,6 +22,8 @@ Includes real-time edit locking using WebSockets (Socket.io).
 
 ---
 
+---
+
 ##  Project Structure
 contact-manager-app/
 ├── backend/
@@ -36,7 +38,6 @@ contact-manager-app/
 │ ├── auth/
 │ └── shared/
 └── README.md
-
 
 ---
 
