@@ -59,3 +59,6 @@ JWT_SECRET=your_jwt_secret
 cd frontend
 npm install
 ng serve
+
+Then open your browser at:
+http://localhost:4200
